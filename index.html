@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AquaSense | Monitoramento Inteligente</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="./src/style.css">
+</head>
+
+<body>
+
+    <!-- ══ HEADER ══ -->
+    <header>
+        <div class="logo">
+            <div class="logo-drop">💧</div>
+            <span class="logo-nome">AquaSense</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Início</a></li>
+                <li><a href="#painel">Painel</a></li>
+                <li><a href="#mapa">Mapa</a></li>
+                <li><a href="#about">Sobre</a></li>
+                <li><a href="#contact">Contato</a></li>
+            </ul>
+        </nav>
+        <div class="nav-badge">
+            <span class="nav-pulse"></span>
+            <span>Monitoramento Ativo</span>
+        </div>
+    </header>
+
+    <!-- ══ HERO ══ -->
+    <section id="banner" id="home">
+        <div class="ring"></div>
+        <div class="ring"></div>
+        <div class="ring"></div>
+
+        <div class="banner-content">
+            <div class="banner-texto">
+                <div class="hero-eyebrow reveal">
+                    <span class="dot"></span>
+                    Monitoramento em Tempo Real
+                </div>
+
+                <h1 class="hero-title reveal">
+                    Protegendo cidades<br>
+                    com dados <span class="highlight">inteligentes</span>
+                </h1>
+
+                <p class="hero-desc reveal">
+                    Plataforma de monitoramento hídrico para prevenção de enchentes, apoio à tomada de decisão e
+                    proteção de comunidades em áreas de risco.
+                </p>
+
+                <div class="hero-actions reveal">
+                    <a href="#painel" class="btn-primary">📊 Ver Painel Agora</a>
+                    <a href="#about" class="btn-secondary">Conhecer o Projeto →</a>
+                </div>
+
+                <div class="hero-stats reveal">
+                    <div class="stat">
+                        <span class="stat-value">24/7</span>
+                        <span class="stat-label">Monitoramento</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat">
+                        <span class="stat-value" id="nivel-preview">--</span>
+                        <span class="stat-label">Nível (cm)</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat">
+                        <span class="stat-value">ODS11</span>
+                        <span class="stat-label">Objetivo Global</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-card reveal">
+                <div class="hero-card-header">
+                    <span class="card-tag">Status Geral do Sistema</span>
+                    <div class="live-chip">
+                        <span class="chip-dot verde"></span>
+                        AO VIVO
+                    </div>
+                </div>
+
+                <div>
+                    <div class="hero-nivel-value" id="nivel-preview-big">--<span class="hero-nivel-unit">cm</span></div>
+                    <div class="hero-nivel-desc">Nível estimado do sensor principal</div>
+                </div>
+
+                <div class="hero-gauge">
+                    <div class="hero-gauge-fill" id="hero-gauge-fill"></div>
+                </div>
+
+                <div class="hero-card-metrics">
+                    <div class="micro-metric">
+                        <div class="micro-metric-label">Status</div>
+                        <div class="status-chip">
+                            <span class="chip-dot verde" id="card-dot-preview"></span>
+                            <span class="micro-metric-val" id="status-preview-texto">Normal</span>
+                        </div>
+                    </div>
+                    <div class="micro-metric">
+                        <div class="micro-metric-label">Sensor</div>
+                        <div class="micro-metric-val">🟢 Online</div>
+                    </div>
+                    <div class="micro-metric">
+                        <div class="micro-metric-label">Risco</div>
+                        <div class="micro-metric-val" id="risco-preview-card">-- / 5</div>
+                    </div>
+                    <div class="micro-metric">
+                        <div class="micro-metric-label">Atualizado</div>
+                        <div class="micro-metric-val" id="hora-card">--:--</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="waves-bg">
+            <svg viewBox="0 0 1440 200" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0,100 C240,180 480,20 720,100 C960,180 1200,20 1440,100 L1440,200 L0,200 Z"
+                    fill="rgba(13,31,32,0.8)" />
+                <path d="M0,130 C360,60 720,180 1080,100 C1260,60 1380,130 1440,140 L1440,200 L0,200 Z" fill="#0d1f20"
+                    opacity="0.9" />
+            </svg>
+        </div>
+    </section>
+
+    <!-- ══ PAINEL ══ -->
+    <section id="painel">
+        <div class="painel-inner">
+            <div class="section-header reveal">
+                <span class="section-tag">Dashboard</span>
+                <h2>Painel Principal</h2>
+                <p>Acompanhe os indicadores em tempo real e tome decisões com clareza.</p>
+            </div>
+
+            <div class="cards-grid reveal">
+
+                <!-- Card Status -->
+                <article class="card destaque" id="card-status">
+                    <div class="card-icon icon-blue">🌊</div>
+                    <div class="card-label">Status do Sistema</div>
+                    <div class="status-linha">
+                        <span class="status-dot" id="status-dot"></span>
+                        <span class="status-texto" id="status-texto">--</span>
+                    </div>
+                    <span class="card-sub" id="nivel-risco">Nível -- de 5 · Risco calculado em tempo real</span>
+                </article>
+
+                <!-- Card Nível -->
+                <article class="card">
+                    <div class="card-icon icon-green">📏</div>
+                    <div class="card-label">Nível da Água</div>
+                    <div class="card-main-value">
+                        <span id="nivel-cm">--</span><span> cm</span>
+                    </div>
+                    <div class="barra-wrap">
+                        <div class="barra-fill" id="barra-nivel"></div>
+                    </div>
+                    <span class="card-sub">Sensor ultrassônico principal</span>
+                </article>
+
+                <!-- Card Sensor -->
+                <article class="card">
+                    <div class="card-icon icon-warn">📡</div>
+                    <div class="card-label">Sensor Arduino</div>
+                    <div class="status-linha">
+                        <span class="chip-dot verde"></span>
+                        <span id="sensor-status"
+                            style="font-family:var(--font-display);font-size:20px;font-weight:700;color:#fff;">Online</span>
+                    </div>
+                    <span class="card-sub" id="ultima-atualizacao">Última leitura: --:--</span>
+                </article>
+            </div>
+
+            <!-- Risco Strip -->
+            <div class="risco-strip reveal">
+                <span class="risco-titulo">Nível de Risco</span>
+                <div class="risco-barras">
+                    <div class="risco-bar" id="risco-1"></div>
+                    <div class="risco-bar" id="risco-2"></div>
+                    <div class="risco-bar" id="risco-3"></div>
+                    <div class="risco-bar" id="risco-4"></div>
+                    <div class="risco-bar" id="risco-5"></div>
+                </div>
+                <div class="risco-info">
+                    <span class="risco-numero-big" id="risco-numero">--</span>
+                    <span class="risco-label-small">de 5</span>
+                </div>
+            </div>
+
+            <!-- Data Tiles -->
+            <div class="data-row reveal">
+                <div class="data-tile">
+                    <span class="tile-icon">🌡️</span>
+                    <div class="tile-text">
+                        <div class="tile-label">Temperatura</div>
+                        <div class="tile-val">27°C</div>
+                    </div>
+                </div>
+                <div class="data-tile">
+                    <span class="tile-icon">💧</span>
+                    <div class="tile-text">
+                        <div class="tile-label">Umidade do ar</div>
+                        <div class="tile-val">84%</div>
+                    </div>
+                </div>
+                <div class="data-tile">
+                    <span class="tile-icon">🕐</span>
+                    <div class="tile-text">
+                        <div class="tile-label">Leituras hoje</div>
+                        <div class="tile-val" id="leituras-hoje">0</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ MAPA ══ -->
+    <section id="mapa">
+        <div class="mapa-inner">
+            <div class="section-header reveal">
+                <span class="section-tag">Mapa</span>
+                <h2>Pontos de Monitoramento</h2>
+                <p>Visualize os sensores ativos e o status de cada ponto monitorado em Manaus.</p>
+            </div>
+
+            <div class="mapa-area reveal">
+                <div class="mapa-placeholder">
+                    <div class="mapa-placeholder-icon">🗺️</div>
+                    <div class="mapa-placeholder-text">Mapa de Manaus · Amazonas</div>
+                </div>
+
+                <div class="pin" style="left:38%;top:28%">
+                    <div class="pin-dot verde"></div>
+                    <span class="pin-label">Ponto A</span>
+                </div>
+                <div class="pin" style="left:55%;top:44%">
+                    <div class="pin-dot amarelo"></div>
+                    <span class="pin-label">Ponto B</span>
+                </div>
+                <div class="pin" style="left:25%;top:55%">
+                    <div class="pin-dot vermelho"></div>
+                    <span class="pin-label">Ponto C</span>
+                </div>
+                <div class="pin" style="left:68%;top:30%">
+                    <div class="pin-dot verde"></div>
+                    <span class="pin-label">Ponto D</span>
+                </div>
+
+                <div class="mapa-legenda">
+                    <span><span class="leg-dot leg-verde"></span>Normal</span>
+                    <span><span class="leg-dot leg-amarelo"></span>Atenção</span>
+                    <span><span class="leg-dot leg-vermelho"></span>Perigo</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ ABOUT ══ -->
+    <section id="about">
+        <div class="about-inner">
+            <div class="section-header reveal">
+                <span class="section-tag">Projeto</span>
+                <h2>Sobre o AquaSense</h2>
+            </div>
+
+            <div class="about-grid">
+                <div class="about-text reveal">
+                    <p>
+                        O <strong>AquaSense</strong> é um protótipo acadêmico voltado para cidades inteligentes e
+                        prevenção de enchentes. O sistema demonstra como sensores, dados em tempo real e interfaces
+                        simples podem <strong>salvar vidas</strong> em comunidades de risco.
+                    </p>
+                    <p>
+                        Desenvolvido com foco no <strong>ODS 11 — Cidades e Comunidades Sustentáveis</strong>, o projeto
+                        conecta tecnologia acessível com impacto social real.
+                    </p>
+
+                    <div class="about-features">
+                        <div class="feat-item"><span class="feat-icon">⚡</span> Leitura de sensores em tempo real via
+                            Arduino</div>
+                        <div class="feat-item"><span class="feat-icon">🚨</span> Alertas automáticos por nível de risco
+                        </div>
+                        <div class="feat-item"><span class="feat-icon">📊</span> Dashboard visual e intuitivo</div>
+                        <div class="feat-item"><span class="feat-icon">🌍</span> Alinhado com objetivos da ONU</div>
+                    </div>
+                </div>
+
+                <div class="about-cards reveal">
+                    <div class="info-card">
+                        <div class="info-card-number">11</div>
+                        <strong>ODS 11</strong>
+                        <span>Cidades e Comunidades Sustentáveis — meta global para garantir cidades inclusivas e
+                            resilientes até 2030.</span>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-card-number" style="font-size:36px;">100%</div>
+                        <strong>Código Aberto</strong>
+                        <span>Projeto acadêmico com propósito social. Todos os dados e protocolos são abertos para
+                            estudo e replicação.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ CONTACT ══ -->
+    <section id="contact">
+        <div class="contact-inner">
+            <div class="contact-grid">
+                <div class="reveal">
+                    <span class="section-tag">Contato</span>
+                    <h2 class="contact-big-title">
+                        Vamos<br><span class="c-accent">conversar</span>?
+                    </h2>
+                    <p class="contact-sub">
+                        Entre em contato para saber mais sobre o AquaSense, solicitar uma demonstração ou conhecer a
+                        proposta acadêmica completa.
+                    </p>
+                </div>
+
+                <div class="contact-card reveal">
+                    <div class="contact-item">
+                        <span class="contact-item-icon">📧</span>
+                        <div class="contact-item-text">
+                            <span class="contact-item-label">E-mail</span>
+                            <span class="contact-item-val">aquasense@projeto.com</span>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-item-icon">📍</span>
+                        <div class="contact-item-text">
+                            <span class="contact-item-label">Localização</span>
+                            <span class="contact-item-val">Manaus · Amazonas · Brasil</span>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-item-icon">🎓</span>
+                        <div class="contact-item-text">
+                            <span class="contact-item-label">Tipo</span>
+                            <span class="contact-item-val">Projeto Acadêmico · 2026</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ FOOTER ══ -->
+    <footer>
+        <div class="footer-logo">
+            <div class="logo-drop" style="width:26px;height:26px;font-size:13px;">💧</div>
+            <span class="logo-nome">AquaSense</span>
+        </div>
+        <div class="footer-links">
+            <a href="#home">Início</a>
+            <a href="#painel">Painel</a>
+            <a href="#about">Sobre</a>
+            <a href="#contact">Contato</a>
+        </div>
+        <div class="footer-text">
+            Projeto Acadêmico · ODS 11<br>
+            Cidades e Comunidades Sustentáveis · 2026
+        </div>
+    </footer>
+
+    <script src="./src/script.js"></script>
+</body>
+
+</html>
