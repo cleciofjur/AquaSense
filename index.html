@@ -15,28 +15,33 @@
 
 <body>
 
-    <!-- ══ HEADER ══ -->
     <header>
         <div class="logo">
             <div class="logo-drop">💧</div>
             <span class="logo-nome">AquaSense</span>
         </div>
-        <nav>
+
+        <button class="hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav id="main-nav">
             <ul>
-                <li><a href="#home">Início</a></li>
-                <li><a href="#painel">Painel</a></li>
-                <li><a href="#mapa">Mapa</a></li>
-                <li><a href="#about">Sobre</a></li>
-                <li><a href="#contact">Contato</a></li>
+                <li><a href="#home" class="nav-link">Início</a></li>
+                <li><a href="#painel" class="nav-link">Painel</a></li>
+                <li><a href="#about" class="nav-link">Sobre</a></li>
+                <li><a href="#contact" class="nav-link">Contato</a></li>
             </ul>
         </nav>
+
         <div class="nav-badge">
             <span class="nav-pulse"></span>
             <span>Monitoramento Ativo</span>
         </div>
     </header>
 
-    <!-- ══ HERO ══ -->
     <section id="banner" id="home">
         <div class="ring"></div>
         <div class="ring"></div>
@@ -134,7 +139,6 @@
         </div>
     </section>
 
-    <!-- ══ PAINEL ══ -->
     <section id="painel">
         <div class="painel-inner">
             <div class="section-header reveal">
@@ -144,8 +148,6 @@
             </div>
 
             <div class="cards-grid reveal">
-
-                <!-- Card Status -->
                 <article class="card destaque" id="card-status">
                     <div class="card-icon icon-blue">🌊</div>
                     <div class="card-label">Status do Sistema</div>
@@ -156,7 +158,6 @@
                     <span class="card-sub" id="nivel-risco">Nível -- de 5 · Risco calculado em tempo real</span>
                 </article>
 
-                <!-- Card Nível -->
                 <article class="card">
                     <div class="card-icon icon-green">📏</div>
                     <div class="card-label">Nível da Água</div>
@@ -169,20 +170,18 @@
                     <span class="card-sub">Sensor ultrassônico principal</span>
                 </article>
 
-                <!-- Card Sensor -->
                 <article class="card">
                     <div class="card-icon icon-warn">📡</div>
                     <div class="card-label">Sensor Arduino</div>
                     <div class="status-linha">
                         <span class="chip-dot verde"></span>
                         <span id="sensor-status"
-                            style="font-family:var(--font-display);font-size:20px;font-weight:700;color:#fff;">Online</span>
+                            style="font-family:var(--font-display);font-size:20px;font-weight:700;color:var(--text-dark);">Online</span>
                     </div>
                     <span class="card-sub" id="ultima-atualizacao">Última leitura: --:--</span>
                 </article>
             </div>
 
-            <!-- Risco Strip -->
             <div class="risco-strip reveal">
                 <span class="risco-titulo">Nível de Risco</span>
                 <div class="risco-barras">
@@ -198,20 +197,12 @@
                 </div>
             </div>
 
-            <!-- Data Tiles -->
             <div class="data-row reveal">
                 <div class="data-tile">
-                    <span class="tile-icon">🌡️</span>
+                    <span class="tile-icon">📡</span>
                     <div class="tile-text">
-                        <div class="tile-label">Temperatura</div>
-                        <div class="tile-val">27°C</div>
-                    </div>
-                </div>
-                <div class="data-tile">
-                    <span class="tile-icon">💧</span>
-                    <div class="tile-text">
-                        <div class="tile-label">Umidade do ar</div>
-                        <div class="tile-val">84%</div>
+                        <div class="tile-label">Tipo de Sensor</div>
+                        <div class="tile-val">Ultrassônico</div>
                     </div>
                 </div>
                 <div class="data-tile">
@@ -221,52 +212,17 @@
                         <div class="tile-val" id="leituras-hoje">0</div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ══ MAPA ══ -->
-    <section id="mapa">
-        <div class="mapa-inner">
-            <div class="section-header reveal">
-                <span class="section-tag">Mapa</span>
-                <h2>Pontos de Monitoramento</h2>
-                <p>Visualize os sensores ativos e o status de cada ponto monitorado em Manaus.</p>
-            </div>
-
-            <div class="mapa-area reveal">
-                <div class="mapa-placeholder">
-                    <div class="mapa-placeholder-icon">🗺️</div>
-                    <div class="mapa-placeholder-text">Mapa de Manaus · Amazonas</div>
-                </div>
-
-                <div class="pin" style="left:38%;top:28%">
-                    <div class="pin-dot verde"></div>
-                    <span class="pin-label">Ponto A</span>
-                </div>
-                <div class="pin" style="left:55%;top:44%">
-                    <div class="pin-dot amarelo"></div>
-                    <span class="pin-label">Ponto B</span>
-                </div>
-                <div class="pin" style="left:25%;top:55%">
-                    <div class="pin-dot vermelho"></div>
-                    <span class="pin-label">Ponto C</span>
-                </div>
-                <div class="pin" style="left:68%;top:30%">
-                    <div class="pin-dot verde"></div>
-                    <span class="pin-label">Ponto D</span>
-                </div>
-
-                <div class="mapa-legenda">
-                    <span><span class="leg-dot leg-verde"></span>Normal</span>
-                    <span><span class="leg-dot leg-amarelo"></span>Atenção</span>
-                    <span><span class="leg-dot leg-vermelho"></span>Perigo</span>
+                <div class="data-tile">
+                    <span class="tile-icon">📶</span>
+                    <div class="tile-text">
+                        <div class="tile-label">Sinal do Sensor</div>
+                        <div class="tile-val">Estável</div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ══ ABOUT ══ -->
     <section id="about">
         <div class="about-inner">
             <div class="section-header reveal">
@@ -314,7 +270,6 @@
         </div>
     </section>
 
-    <!-- ══ CONTACT ══ -->
     <section id="contact">
         <div class="contact-inner">
             <div class="contact-grid">
@@ -330,13 +285,17 @@
                 </div>
 
                 <div class="contact-card reveal">
-                    <div class="contact-item">
-                        <span class="contact-item-icon">📧</span>
+                    <a href="https://github.com/cleciofjur/AquaSense" target="_blank" rel="noopener noreferrer"
+                        class="contact-item contact-item-link">
+                        <span class="contact-item-icon">🐙</span>
                         <div class="contact-item-text">
-                            <span class="contact-item-label">E-mail</span>
-                            <span class="contact-item-val">aquasense@projeto.com</span>
+                            <span class="contact-item-label">GitHub — Repositório Open-Source</span>
+                            <span class="contact-item-val">github.com/cleciofjur/AquaSense</span>
                         </div>
-                    </div>
+                        <span class="contact-item-arrow">↗</span>
+                    </a>
+
+                    <!-- Localização -->
                     <div class="contact-item">
                         <span class="contact-item-icon">📍</span>
                         <div class="contact-item-text">
@@ -344,12 +303,17 @@
                             <span class="contact-item-val">Manaus · Amazonas · Brasil</span>
                         </div>
                     </div>
-                    <div class="contact-item">
+
+                    <!-- PDF Download -->
+                    <div class="contact-item contact-item-download" id="download-pdf-btn" role="button" tabindex="0"
+                        aria-label="Baixar PDF do projeto">
                         <span class="contact-item-icon">🎓</span>
                         <div class="contact-item-text">
                             <span class="contact-item-label">Tipo</span>
                             <span class="contact-item-val">Projeto Acadêmico · 2026</span>
+                            <span class="contact-item-hint">📄 Toque aqui para baixar o PDF do projeto</span>
                         </div>
+                        <span class="contact-item-arrow download-arrow">⬇</span>
                     </div>
                 </div>
             </div>
