@@ -14,8 +14,8 @@ let reconectando = false;
 // ─── UTILITÁRIOS ─────────────────────────────────────────────────────────────
 
 function getRisco(n) {
-  if (n > 18) return { r: 1, label: "Seguro",   color: "#3de87a", dot: "verde"    };
-  if (n > 10) return { r: 3, label: "Atenção",  color: "#f5c842", dot: "amarelo"  };
+  if (n > 8) return { r: 1, label: "Seguro",   color: "#3de87a", dot: "verde"    };
+  if (n > 11.5) return { r: 3, label: "Atenção",  color: "#f5c842", dot: "amarelo"  };
   return            { r: 5, label: "Perigo!",   color: "#ff5f6d", dot: "vermelho" };
 }
 
